@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  apache:
+    build:
+      dockerfile: php7-apache-dockerfile.yml
+      context: .
+    image: 'maicon/php7-cli-dockerfile'
+    container_name: vscode-remote-try-php-php7.2
+    restart: always
+    ports:
+      - '8000:80'
+    volumes:
+      - ../.:/var/www/html
+    depends_on:
+      - mysqldb
+    links:
+      - mysqldb
+
+  mysqldb:
+    container_name: vscode-remote-try-php-mysql5.7
+    image: mysql:5.7
+    restart: always
+    ports:
+      - '3307:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=biblioteca
