@@ -16,5 +16,6 @@
 		"felixfbecker.php-intellisense"
 	],
 
+	"workspaceMount": "source=remote-workspace,target=/var/www/html,type=volume",
 	"workspaceFolder": "/var/www/html"
 }
